@@ -13,13 +13,13 @@ RUN apt-get update && \
 WORKDIR /app
 
 # Копируем скрипт
-COPY entrypoint.sh /app/entrypoint.sh
+COPY script.sh /app/script.sh
 
 # Делаем скрипт исполняемым
-RUN chmod +x /app/entrypoint.sh
+RUN chmod +x /app/script.sh
 
 # Общий том будет монтироваться в /shared
 VOLUME ["/shared"]
 
 # По умолчанию запускаем скрипт
-CMD ["/app/entrypoint.sh"]
+CMD ["/app/script.sh"]
