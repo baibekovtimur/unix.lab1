@@ -5,11 +5,6 @@ LOCKFILE="$SHARED_DIR/.lockfile"
 
 mkdir -p "$SHARED_DIR"
 
-command -v flock >/dev/null 2>&1 || {
-    echo "Error: 'flock' not found. Install util-linux." >&2
-    exit 1
-}
-
 exec 9>>"$LOCKFILE"
 
 CONTAINER_ID="$(LC_ALL=C tr -dc 'A-Za-z0-9' </dev/urandom 2>/dev/null | head -c 8)"
