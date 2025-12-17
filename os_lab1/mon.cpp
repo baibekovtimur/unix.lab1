@@ -59,6 +59,8 @@ int main()
     std::mutex coutMutex;
     const int EVENT_COUNT = 5;
 
+    std::setlocale(LC_ALL, "");
+
     std::thread producer([&]
                          {
         for (int i = 1; i <= EVENT_COUNT; ++i) {
