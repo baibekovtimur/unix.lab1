@@ -13,7 +13,6 @@
 
 // Signal handler declaration
 volatile sig_atomic_t wasSigHup = 0;
-volatile sig_atomic_t running = 1;
 int active_socket = -1;
 
 void sigHupHandler(int r)
@@ -21,14 +20,8 @@ void sigHupHandler(int r)
     wasSigHup = 1;
 }
 
-void sigIntHandler(int sig)
-{
-    running = 0;
-}
-
 int main()
 {
-    signal(SIGINT, sigIntHandler);
 
     int server_fd = socket(AF_INET, SOCK_STREAM, 0);
     int opt = 1;
@@ -59,7 +52,7 @@ int main()
     printf("Send SIGHUP with: kill -HUP %d\n", getpid());
     printf("Connect with: telnet localhost %d\n", PORT);
 
-    while (running)
+    while (true)
     {
         fd_set read_fds;
         FD_ZERO(&read_fds);
