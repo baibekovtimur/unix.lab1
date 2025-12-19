@@ -49,7 +49,6 @@ int main()
     sigprocmask(SIG_BLOCK, &blockedMask, &origMask);
 
     printf("Server started on port %d. PID: %d\n", PORT, getpid());
-    printf("Send SIGHUP with: kill -HUP %d\n", getpid());
     printf("Connect with: telnet localhost %d\n", PORT);
 
     while (true)
