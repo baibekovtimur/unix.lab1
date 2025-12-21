@@ -1,4 +1,3 @@
-// dedup_hardlinks.cpp
 #include <iostream>
 #include <filesystem>
 #include <fstream>
